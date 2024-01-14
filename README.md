@@ -14,4 +14,5 @@ https://github.com/rslewenstein/store-microservices
         - [x] - SQLite Database
         - [x] - RabbitMQ (Consumer)
         - [x] - Logger
+        - [x] - Load Tests - K6
         - [ ] - Unit Tests
