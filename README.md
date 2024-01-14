@@ -16,3 +16,4 @@ https://github.com/rslewenstein/store-microservices
         - [x] - Logger
         - [x] - Load Tests - K6
         - [ ] - Unit Tests
+        - [x] - Azure Pipelines
