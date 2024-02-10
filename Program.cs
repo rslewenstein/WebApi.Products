@@ -38,6 +38,9 @@ var mapperConfig = new MapperConfiguration(map =>
     map.AddProfile(new MapperProfile());
 });
 
+// Habilitando CORS
+builder.Services.AddCors();
+
 IMapper mapper = mapperConfig.CreateMapper();
 builder.Services.AddSingleton(mapper);        
 
@@ -56,6 +59,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Habilitando CORS 
+app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseHttpsRedirection();
 
