@@ -7,6 +7,6 @@ export const options = {
 };
 
 export default function() {
-  http.put('http://localhost:5013/api/Product/1, 1');
+  http.put('http://localhost:5024/api/Product/1, 1');
   sleep(1);
 }

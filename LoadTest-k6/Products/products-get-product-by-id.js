@@ -8,6 +8,6 @@ export const options = {
 
 export default function() {
   // http.get('https://test.k6.io');
-  http.get('http://localhost:5013/api/Product/1');
+  http.get('http://localhost:5024/api/Product/1');
   sleep(1);
 }
