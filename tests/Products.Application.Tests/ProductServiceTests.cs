@@ -48,9 +48,25 @@ public class ProductServiceTests
         //Assert
         result.Should().NotBeEmpty();
     }
+
+    [Fact]
+    public async void ListAll_ShouldReturnEmpty_When_ThereIsNotAProduct_test()
+    {
+        //Arrange
+        Product product = new();
+        
+        List<Product> productList = new()
+        {
+            product
+        };
+
+        //Act
+        var result = await _sut.ListAll();
+
+        //Assert
+        result.Should().BeEmpty();
+    }    
 }
 
-
-//         public Task<IList<ProductDto>> ListAll();
 //         public Task<ProductDto> ListById(int id);
 //        public Task UpdateQuantityProduct(int id, int qtd);
