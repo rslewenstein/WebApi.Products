@@ -65,7 +65,28 @@ public class ProductServiceTests
 
         //Assert
         result.Should().BeEmpty();
-    }    
+    } 
+
+    [Fact]
+    public async void ListById_ShouldReturnsAProduct_When_ThereIsAProductIdValid_test()
+    {
+        //Arrange
+        var productId = 1;
+        var productName = "Milan 2009";
+        var productType = "Jersey";
+        var price = 230.98;
+        var quantity = 144;
+        var product = new Product{ProductId = productId, ProductName = productName, ProductType = productType, Price = price, Quantity = quantity};
+
+        _productRepository.GetByIdAsync(productId).Returns(product);
+
+        //Act
+        var result = await _sut.ListById(productId);
+
+        //Assert
+        Assert.Equal(productId, result.ProductId);
+        //result.Should().BeEquivalentTo(productDTO);
+    }   
 }
 
 //         public Task<ProductDto> ListById(int id);
