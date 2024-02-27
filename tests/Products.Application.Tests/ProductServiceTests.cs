@@ -78,16 +78,31 @@ public class ProductServiceTests
         var quantity = 144;
         var product = new Product{ProductId = productId, ProductName = productName, ProductType = productType, Price = price, Quantity = quantity};
 
+        var productDto = new ProductDto{ProductId = productId, ProductName = productName, ProductType = productType, Price = price, Quantity = quantity};
+
         _productRepository.GetByIdAsync(productId).Returns(product);
 
         //Act
         var result = await _sut.ListById(productId);
 
         //Assert
-        Assert.Equal(productId, result.ProductId);
-        //result.Should().BeEquivalentTo(productDTO);
-    }   
-}
+        result.Should().Be(productDto);
+    }
 
-//         public Task<ProductDto> ListById(int id);
-//        public Task UpdateQuantityProduct(int id, int qtd);
+    [Fact]
+    public async void ListById_ShouldNotReturnsAProduct_When_ThereIsNotAProductIdValid_test()
+    {
+        //Arrange
+        int productId = 0;
+        var product = new Product();
+
+        _productRepository.GetByIdAsync(productId).Returns(product);
+
+        //Act
+        var result = await _sut.ListById(productId);
+
+        //Assert
+        result.Should().NotBe(productId);
+    }
+
+}
